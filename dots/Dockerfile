@@ -48,7 +48,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 ##############
 # CMD        #
 ##############
-RUN service nginx start
-RUN service php-fpm start
-RUN service mysql start
-RUN service redis start
+CMD service nginx start
+CMD service php-fpm start
+CMD service mysql start
+CMD service redis start
