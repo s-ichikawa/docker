@@ -48,7 +48,10 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 ##############
 # CMD        #
 ##############
-CMD service nginx start
 CMD service php-fpm start
 CMD service mysql start
 CMD service redis start
+
+ENTRYPOINT /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+
+EXPOSE 80
