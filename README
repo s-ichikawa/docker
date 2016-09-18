@@ -2,3 +2,5 @@
 
 docker run -h elasticsearch --name es -d -p 9200:9200 elasticsearch
 docker run --name kibana -d -p 5601:5601 --link es:es kibana
+
+# Sinatora
