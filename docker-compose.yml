@@ -1,0 +1,26 @@
+sinatra:
+  image: sinatra
+  command: bundle exec ruby app.rb
+  ports:
+    - 8080:4567
+  volumes:
+    - ./sinatra:/app
+  links:
+    - redis
+  environment:
+    - REDIS_HOST=redis
+    - REDIS_PORT=6379
+redis:
+  image: redis
+es:
+  image: elasticsearch
+  hostname: elasticsearch
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+kibana:
+  image: kibana
+  ports:
+    - "5601:5601"
+  links:
+    - es:es
