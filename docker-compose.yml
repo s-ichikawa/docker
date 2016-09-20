@@ -7,9 +7,12 @@ sinatra:
     - ./sinatra:/app
   links:
     - redis
+    - postgres
   environment:
     - REDIS_HOST=redis
     - REDIS_PORT=6379
+postgres:
+  image: postgres
 redis:
   image: redis
 es:
