@@ -11,6 +11,15 @@ sinatra:
   environment:
     - REDIS_HOST=redis
     - REDIS_PORT=6379
+laravel:
+  build: ./laravel
+  volumes:
+    - ./laravel:/var/www/html
+  ports:
+    - 8081:80
+  links:
+    - redis
+    - postgres
 postgres:
   image: postgres
 redis:
