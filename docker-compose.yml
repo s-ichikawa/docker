@@ -1,39 +1,40 @@
-sinatra:
-  image: sinatra
-  command: bundle exec ruby app.rb
+#sinatra:
+#  image: sinatra
+#  command: bundle exec ruby app.rb
+#  ports:
+#    - 8080:4567
+#  volumes:
+#    - ./sinatra:/app
+#  links:
+#    - redis
+#    - postgres
+#  environment:
+#    - REDIS_HOST=redis
+#    - REDIS_PORT=6379
+nginx:
+  image: nginx
   ports:
-    - 8080:4567
-  volumes:
-    - ./sinatra:/app
+    - 8080:80
   links:
-    - redis
-    - postgres
-  environment:
-    - REDIS_HOST=redis
-    - REDIS_PORT=6379
+    - laravel
 laravel:
-  build: ./laravel
-  volumes:
-    - ./defult.conf:/etc/nginx/conf.d/default.conf
-    - ./laravel:/var/www/html
-  ports:
-    - 8081:80
-  links:
-    - redis
-    - postgres
-postgres:
-  image: postgres
-redis:
-  image: redis
-es:
-  image: elasticsearch
-  hostname: elasticsearch
-  ports:
-    - "9200:9200"
-    - "9300:9300"
-kibana:
-  image: kibana
-  ports:
-    - "5601:5601"
-  links:
-    - es:es
+  image: laravel
+#  links:
+#    - redis
+#    - postgres
+#postgres:
+#  image: postgres
+#redis:
+#  image: redis
+#es:
+#  image: elasticsearch
+#  hostname: elasticsearch
+#  ports:
+#    - "9200:9200"
+#    - "9300:9300"
+#kibana:
+#  image: kibana
+#  ports:
+#    - "5601:5601"
+#  links:
+#    - es:es
