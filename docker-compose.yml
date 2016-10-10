@@ -15,12 +15,14 @@ nginx:
   build: nginx
   ports:
     - 80:80
+    - 8080:8080
   links:
     - app:php
+    - symfony:symfony
 app:
   build: phpfpm
-#symfony:
-#  build: symfony
+symfony:
+  build: symfony
 #  links:
 #    - redis
 #    - postgres
